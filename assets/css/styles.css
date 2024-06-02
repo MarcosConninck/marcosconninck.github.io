@@ -1,5 +1,7 @@
 .teste{
+    align-content: center;
+    font-style: italic;
     background: rgb(245, 231, 154);
-    width: 100px;
-    height: 100px;
+    width: 220px;
+    height: 80px;
 }
