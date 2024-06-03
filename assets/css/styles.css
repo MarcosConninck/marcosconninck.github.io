@@ -1,7 +1,61 @@
+* {
+    margin: 0;
+    padding: 0;
+}
+
+p, h2 {
+    color:purple;
+}
+body div section p,
+body div section h1 {
+    color: blue;
+}
+
 .teste{
     align-content: center;
     font-style: italic;
     background: rgb(245, 231, 154);
     width: 220px;
     height: 80px;
+}
+
+.heading {
+    color: brown;
+    background: red;
+}
+body h2.heading{
+    background: white;
+}
+
+.main-content h3{
+    text-align: center;
+    background: gray;
+}
+
+.main-content p.descricao {
+    color: blueviolet;
+    font-style: italic;
+}
+div {
+    color: initial;
+    margin-left: 10px;
+}
+
+.pai {
+    background: rgba(0, 0, 255, 0.329);
+}
+
+/* seleciona todos, não especifico */
+.pai .filha {
+    background: blueviolet;
+}
+
+/* child selector */
+.pai > .filha {
+    background: blue;
+    color: aqua;
+}
+
+.pai > .filha > .filha {
+    background: red;
 }
