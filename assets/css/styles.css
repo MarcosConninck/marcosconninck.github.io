@@ -37,17 +37,20 @@ body h2.heading{
     font-style: italic;
 }
 div {
-    color: initial;
-    margin-left: 10px;
+
 }
 
 .pai {
     background: rgba(0, 0, 255, 0.329);
+    color: initial;
+    margin-left: 10px;
 }
 
 /* seleciona todos, não especifico */
 .pai .filha {
     background: blueviolet;
+    color: initial;
+    margin-left: 10px;
 }
 
 /* child selector */
@@ -58,4 +61,29 @@ div {
 
 .pai > .filha > .filha {
     background: red;
+}
+
+/* adjacent sibling selector, seleciona diretamente o seguinte, p
+ara um elemento que tenha a classe pai, encontrar um <p> q vem depois de <h1> */
+/* .pai2 h1+p {
+    color: red;
+}
+.pai2 p+h1 {
+    color: chartreuse;
+} */
+/* general sibling selector -> todos que vem depois de um elemento */
+.pai2 h1~p {
+    color: aquamarine;
+    background: gray;
+}
+.pai2 h1~.dois {
+    background: rebeccapurple;
+}
+
+[meu-atributo="valor"] {
+    color: red;
+}
+[checked] {
+    width: 50px;
+    height: 50px;
 }
