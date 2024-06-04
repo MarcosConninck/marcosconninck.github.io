@@ -78,10 +78,69 @@ ara um elemento que tenha a classe pai, encontrar um <p> q vem depois de <h1> */
     background: rebeccapurple;
 }
 
-[meu-atributo="valor"] {
+/* SELETORES DE ATRIBUTOS */
+/* seleciona pelo menos algum valor IN opções
+[meu-atributo~="valor"] {
     color: red;
 }
+/* seleciona valor que começa com.. */
+/* [meu-atributo^="val"] {
+    color: red;
+} */
+/* seleciona valor que termina com.. */
+/* [meu-atributo$="alor"] {
+    color: red;
+} */
+/* seleciona valor que CONTEM com.. */
+/* [meu-atributo*="lo"] {
+    color: red;
+} */
+
 [checked] {
     width: 50px;
     height: 50px;
+}
+.heading2 {
+    transition: all 300ms ease-in-out;
+}
+
+.heading2:hover {
+    color: gray;
+    background: lightcoral;
+}
+
+a {
+    color: darkorange;
+}
+a:link {
+    color: darkgreen;
+}
+a:visited {
+    color: brown;
+}
+a:hover {
+    background: blue;
+    color: white;
+    text-decoration: none;
+}
+a:active {
+    background: blueviolet;
+    color: white;
+    text-decoration: none;
+}
+input:focus {
+    box-shadow: 0 0 5px rgba(0,0,0, 0.6);
+    outline: none;
+    border: 2px solid black
+}
+input:disabled {
+    cursor: not-allowed;
+    background: rgba(128, 128, 128, 0.493);
+}
+
+input:checked + p{
+    color: black;
+}
+.pai .lista li:first-child{
+    background: red;
 }
