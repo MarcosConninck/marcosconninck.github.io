@@ -141,6 +141,36 @@ input:disabled {
 input:checked + p{
     color: black;
 }
+input:not(:checked) + p{
+    color: rgb(0, 255, 170);
+}
 .pai .lista li:first-child{
     background: red;
+}
+p:not(.meio) {
+    color: green;
+}
+
+.lista-grande {
+    font-size: 20px;
+    margin: 35px;
+}
+.lista-grande p{
+    font-weight: bold;
+}
+.lista-grande ul {
+    list-style-type:decimal
+}
+.lista-grande ul li {
+    height: 23px;
+    width: 50px;
+    text-align: center;
+}
+
+.lista-grande ul li:nth-child(-n + 4){
+    border: 2px solid black;
+    margin-bottom: 1px;
+}
+.lista-grande ul li:nth-child(odd){
+    background-color: rgb(247, 247, 173);
 }
