@@ -174,3 +174,56 @@ p:not(.meio) {
 .lista-grande ul li:nth-child(odd){
     background-color: rgb(247, 247, 173);
 }
+
+.segunda-lista ul li::after {
+    content: "  -  ";
+    background-color: red;
+    color: white;
+}
+.segunda-lista ul li::before {
+    content: "  -  ";
+    background-color: red;
+    color: white;
+}
+.segunda-lista .texto-segunda-lista::first-letter {
+    font-size: 33px;
+    display: block;
+    float: left;
+    margin: 9px 1px 1px 1px;
+}
+
+.segunda-lista .texto-segunda-lista::first-line {
+    color: black;
+}
+
+#explicacao-especificidade {
+    color: black;
+    font-size: 20px;
+    margin: 0 0 0 20px;
+}
+
+/* 
+Especificidade, empate(ordem), style, important
+
+ID -> Classes, atributos e Pseudo-classes -> Elementos e pseudo classes
+1,    0,                                     0
+1,    1,                                     0
+1,    1,                                     1
+2,    1,                                     0
+
+!important
+força o navegador a usar esta configuração do css, usar em último recurso
+*/
+#p {
+    background-color: lightgray;
+}
+
+#p.p {
+    background-color: yellow;
+}
+p#p.p {
+    background-color: lightblue;
+}
+#s #p.p {
+    background-color: lightcyan;
+}
