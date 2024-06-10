@@ -270,5 +270,9 @@ p#p.p {
 .grid .col .col-content {
     width: 100%;
     height: 100%;
-    background-color: aqua;
+    background-color: #e5ff0071;
+}
+
+.cores{
+    margin: 20px auto 0 30px;
 }
