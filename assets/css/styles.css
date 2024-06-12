@@ -276,3 +276,44 @@ p#p.p {
 .cores{
     margin: 20px auto 0 30px;
 }
+html {
+    /* padrão do navegador é 16px */
+    font-size: 62.5%; 
+    scroll-behavior: smooth;
+}
+
+.medidas {
+    margin: 0;
+    width: 50vw;
+    height: 100vh;
+    background-color: yellowgreen;
+}
+.medidas-2 {
+    margin: 0;
+    width: 100vw;
+    height: 100vh;
+    background-color: lightyellow;
+}
+.medidas-3 {
+    margin: 0;
+    width: 100vw;
+    height: 100vh;
+    background-color: lightgreen;
+}
+.medidas-4 {
+    margin: 0;
+    width: 100vw;
+    height: 100vh;
+    background-color: lightblue;
+}
+
+.medidas .p-medidas {
+    font-size: 1.6rem;
+}
+
+.medidas > div {
+    width: 50%;
+    height: 50rem;
+    background-color: azure;
+    font-size: 3vmax;
+}
