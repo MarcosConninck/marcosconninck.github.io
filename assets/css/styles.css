@@ -283,10 +283,16 @@ html {
 }
 
 .medidas {
+    position: relative;
     margin: 0;
     width: 50vw;
     height: 100vh;
-    background-color: yellowgreen;
+    background-color: rgba(153, 205, 50, 0.5);
+    z-index: 2;
+}
+
+.p-medidas {
+    overflow: visible;
 }
 .medidas-2 {
     margin: 0;
@@ -316,4 +322,73 @@ html {
     height: 50rem;
     background-color: azure;
     font-size: 3vmax;
+}
+
+.edicao-textos #p-edicao-textos {
+    position: relative;
+    color: black;
+    font-style: italic;
+    font-weight: bold;
+    font-size: 20px;
+    font-family: "Audiowide" ,sans-serif;
+    letter-spacing: 2px;
+    word-spacing: 10px;
+    line-height: 25px;
+    text-align: left;
+    text-decoration: underline;
+    text-indent: 30px;
+    text-shadow: 2px 2px 4px red;
+    text-transform: uppercase;
+    z-index: 2;
+}
+
+.posicionamento-filha1, .posicionamento-filha2, .posicionamento-filha3 {
+    width: 300px;
+    height: 300px;
+    background-color: aquamarine;
+    margin: 10px;
+    text-align: center;
+    line-height: 300px;
+    font-weight: bolder;
+    
+}
+.posicionamento-filha1 {
+    position: relative; /* não muda o flow da página mas se posiciona conforme outros elementos */
+    left: 310px;
+}
+
+.posicionamento-filha2 {
+    background-color: aqua;
+    position: fixed; /*bom pra fazer um cabeçalho/menu que acompanha a página */
+    top: 0px;
+}
+.posicionamento-filha3 {
+    background-color: bisque;
+    position: absolute;
+    left: 50%;
+    margin-left: -150px;
+    top: 50%;
+    margin-top: -150px;
+    z-index: 1;
+    /* para ficar exatamente no meio */
+}
+
+.pai-stiky {
+    position: absolute;
+    font-size: 1.8rem;
+    top: 10px;
+    right: 10px;
+    height: 200px;
+    width: 200px;
+    overflow-y: auto;
+}
+.pai-stiky .ul-stiky {
+    margin-left: 35px;
+    list-style-type: lower-greek;
+}
+.pai-stiky .stiky {
+    position: sticky;
+    background-color: gray;
+    top: 0;
+    list-style-type: none;
 }
