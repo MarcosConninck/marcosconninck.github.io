@@ -394,3 +394,44 @@ html {
     top: 0;
     list-style-type: none;
 }
+
+.grid-responsiva::after {
+    content: '';
+    display: block;
+    clear: both;
+}
+.grid-responsiva {
+    box-sizing: border-box;
+    margin: 15px;
+}
+
+.grid-responsiva .col {
+    box-sizing: border-box;
+    width: 33.33%;
+    height: 300px;
+    float: left;
+    padding: 15px;
+}
+.grid-responsiva .col .col-content {
+    width: 100%;
+    height: 100%;
+    background-color: #00c3ffd2;
+    align-content: center;
+    text-align: center;
+}
+@media all and (max-width: 320px) {
+    .grid-responsiva .col {
+        width: 100%;
+    }
+}
+@media all and (min-width: 321px) and (max-width: 400px){
+    .grid-responsiva .col {
+        width: 50%;
+    }
+}
+
+@media all and (min-width: 401px){
+    .grid-responsiva .col {
+        width: 33.3%;
+    }
+}
