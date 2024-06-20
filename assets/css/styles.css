@@ -352,13 +352,14 @@ html {
     
 }
 .posicionamento-filha1 {
+    overflow-x: hidden;
     position: relative; /* não muda o flow da página mas se posiciona conforme outros elementos */
     left: 310px;
 }
 
 .posicionamento-filha2 {
     background-color: aqua;
-    position: fixed; /*bom pra fazer um cabeçalho/menu que acompanha a página */
+    position: absolute; /*bom pra fazer um cabeçalho/menu que acompanha a página */
     top: 0px;
 }
 .posicionamento-filha3 {
