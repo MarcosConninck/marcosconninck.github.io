@@ -351,11 +351,10 @@ html {
     font-weight: bolder;
     
 }
-.posicionamento-filha1 {
+/* .posicionamento-filha1 {
     overflow-x: hidden;
-    position: relative; /* não muda o flow da página mas se posiciona conforme outros elementos */
-    left: 310px;
-}
+    position: relative; /* não muda o flow da página mas se posiciona conforme outros elementos
+    left: 310px;} */
 
 .posicionamento-filha2 {
     background-color: aqua;
