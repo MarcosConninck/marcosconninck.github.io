@@ -486,3 +486,34 @@ html {
     }
 } */
 
+.flex-container {
+    display: flex;
+    flex-direction: row; /* orientação em linha, coluna, etc */
+    justify-content: space-evenly; /* eixo principal em relação ao flex-direction , dá pra usar espaçamentos*/
+    /* align-items: center; /* eixo perpendicular */
+    /* align-content: baseline; /* alinha o conteudo todo */
+    background-color: yellow;
+    /* flex-wrap: wrap; */
+    /* height: 500px; */
+    flex-flow: row wrap;
+}
+.flex-container .flex-item {
+    /*flex-grow: 1; /*1-> permite que distribuia espaço para todos elementos */
+    /*flex-shrink: 0; /* permite que o elemento se diminua ou não*/
+    /*flex-basis: 300px; /* antes de dividir o espaço em branco, ele dá esse tamanho pro elemento */
+    flex: 1 1 300px;
+    width: 33.33%;
+    height: 200px;
+    color: #ffffff;
+    background-color: red;
+    border: 5px black solid;
+    margin: 10px;
+    margin-top: 20px;
+    margin-bottom: 20px;
+}
+
+.flex-container .flex-item:nth-child(2) {
+    flex: 1 1 300px;
+    background-color: #555555;
+}
+
