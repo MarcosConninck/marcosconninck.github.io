@@ -517,3 +517,34 @@ html {
     background-color: #555555;
 }
 
+.flex-container .flex-item-three {
+    margin-left: 2px;
+    display: initial;
+    display: inline-flex;
+    flex: 1 1 auto;
+    flex-flow: row nowrap;
+    align-items: center;
+    justify-content: space-around;
+    width: 47%;
+    height: 47%;
+    background-color: aquamarine;
+    border: 3px #555555  solid;
+    color: black;
+}
+
+.two-collum {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+}
+
+.one-collum {
+    background: gray;
+    width: 100px;
+    height: 400px;
+    text-align: center;
+    align-content: center;
+    font-weight: 600;
+}
+
+
