@@ -565,4 +565,34 @@ html {
     border: 3px dashed red;
 }
 
+.grid {
+    /* max-width: 700px; */
+    margin: 10px auto;
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+    grid-template-rows: 1fr 1fr 1fr;
+    gap: 30px;
+}
+.grid div {
+    background: tomato;
+    min-height: 100px;
+}
+
+.grid div:nth-child(5) {
+    background-color: darkred;
+    grid-row: span 2;
+    grid-column: span 2;
+    /* grid-column-start: 2;
+    grid-column-end: 4;
+    grid-row-start: 2;
+    grid-row-end: 4; */
+}
+
+@media (max-width: 768px) {
+    .grid div:nth-child(5) {
+    background-color: darkred;
+    grid-column: span 1;
+    }
+}
+
 
