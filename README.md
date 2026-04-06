@@ -273,7 +273,7 @@ whitenoise            # Servir arquivos estáticos no Render
 
 ## 🔒 Segurança — O que NUNCA sobe para o Git
 
-Garanta que o seu `.gitignore` contenha:
+Garantir que o seu `.gitignore` contenha:
 
 ```
 .env
