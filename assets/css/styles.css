@@ -1,10 +1,40 @@
-* {
-    margin: 0;
-    padding: 0;
-    overflow-x: hidden;
-
+/* style.css */
+:root {
+  /* Paleta Rústica */
+  --bg-color: #1a1a1a; /* Fundo escuro, lembrando carvão/ferro */
+  --text-light: #e0e0e0; /* Texto claro para contraste */
+  --accent-fire: #d35400; /* Laranja/Vermelho que remete ao fogo da forja */
+  --wood-brown: #5c4033; /* Marrom madeira para detalhes ou botões */
+  --iron-grey: #333333; /* Cinza chumbo para seções ou cards */
 }
 
-h1 {
-    background-color: brown;
+body {
+  background-color: var(--bg-color);
+  color: var(--text-light);
+  font-family:
+    "Segoe UI", Tahoma, Geneva, Verdana, sans-serif; /* Depois podemos trocar por uma fonte mais rústica do Google Fonts */
+  margin: 0;
+  padding: 0;
+}
+
+/* Exemplo de Container Mobile-First */
+.container {
+  width: 100%;
+  padding: 0 20px; /* Respiro nas laterais para celular */
+  box-sizing: border-box;
+}
+
+/* Galeria em Grid (Perfeito para celular e adaptável para PC) */
+.gallery-grid {
+  display: grid;
+  grid-template-columns: 1fr; /* 1 coluna no celular */
+  gap: 15px;
+  padding: 20px 0;
+}
+
+/* Media Query: Quando a tela for maior (Tablets e PCs), muda para 2 ou 3 colunas */
+@media (min-width: 768px) {
+  .gallery-grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
 }
