@@ -45,7 +45,7 @@ Todos os serviços abaixo possuem plano gratuito suficiente para o estágio inic
 
 ### ✅ Fase 1 — Landing Page (Concluída)
 
-- [x] Desenvolver Landing Page estática e responsivo (Mobile-First).
+- [x] Desenvolver Landing Page estática com design rústico e responsivo (Mobile-First).
 
 ### 🔧 Fase 2 — Base Django (Em andamento)
 
@@ -81,64 +81,76 @@ Todos os serviços abaixo possuem plano gratuito suficiente para o estágio inic
 project-root/
 │
 ├── README.md
-├── .env                              # ⚠️ Variáveis secretas — NUNCA sobe para o Git
+├── .env                                   # ⚠️ Variáveis secretas — NUNCA sobe para o Git
 ├── .gitignore
 │
-└── backend/                          # Todo o código Django fica aqui
-    ├── manage.py                     # Gerenciador de comandos do Django
-    ├── requirements.txt              # Dependências do projeto (Django, Psycopg2, etc.)
-    ├── db.sqlite3                    # Banco de dados local (gerado automaticamente — apenas dev)
+├── frontend/                              # 🎨 Landing Page estática (HTML/CSS/JS puros)
+│   ├── index.html                         # Ponto de entrada — abre direto no navegador
+│   ├── css/
+│   │   └── style.css                      # Estilos globais (design rústico, mobile-first)
+│   ├── js/
+│   │   └── main.js                        # Scripts de interação da landing page
+│   └── images/                            # Imagens estáticas da landing page
+│       └── logo.png
+│
+└── backend/                               # ⚙️ Projeto Django (MTV)
+    ├── manage.py                          # Gerenciador de comandos do Django
+    ├── requirements.txt                   # Dependências do projeto (Django, Psycopg2, etc.)
+    ├── db.sqlite3                         # Banco de dados local (gerado automaticamente — apenas dev)
     │
-    ├── vrforge/                      # Configurações globais do projeto Django
+    ├── vrforge/                           # Configurações globais do projeto Django
     │   ├── __init__.py
     │   ├── wsgi.py
-    │   ├── urls.py                   # Roteador principal de URLs
-    │   └── settings/                 # ⭐ Settings separados por ambiente
-    │       ├── base.py               # Configurações comuns (dev + prod)
-    │       ├── dev.py                # SQLite, DEBUG=True, variáveis locais
-    │       └── prod.py               # PostgreSQL, variáveis de ambiente, segurança
+    │   ├── urls.py                        # Roteador principal de URLs
+    │   └── settings/                      # ⭐ Settings separados por ambiente
+    │       ├── base.py                    # Configurações comuns (dev + prod)
+    │       ├── dev.py                     # SQLite, DEBUG=True, variáveis locais
+    │       └── prod.py                    # PostgreSQL, variáveis de ambiente, segurança
     │
-    ├── apps/                         # ⭐ Todas as apps do projeto
+    ├── apps/                              # ⭐ Apps Django separadas por domínio
     │   │
-    │   ├── pages/                    # Páginas estáticas (Landing Page, Sobre, Contato)
+    │   ├── pages/                         # Páginas institucionais (Home, Sobre, Contato)
     │   │   ├── views.py
     │   │   ├── urls.py
     │   │   └── templates/
     │   │       └── pages/
-    │   │           ├── home.html     # ← Landing Page atual entra aqui
+    │   │           ├── home.html          # ← HTML da landing page migrado para cá (Fase 2)
     │   │           └── about.html
     │   │
-    │   ├── catalog/                  # Catálogo de Produtos / Facas
-    │   │   ├── models.py             # class Produto, class Categoria
-    │   │   ├── views.py              # Lista de produtos, detalhe do produto
+    │   ├── catalog/                       # Catálogo de Produtos / Facas
+    │   │   ├── models.py                  # class Produto, class Categoria
+    │   │   ├── views.py                   # Lista de produtos, detalhe do produto
     │   │   ├── urls.py
-    │   │   ├── admin.py              # Configuração do painel administrativo
+    │   │   ├── admin.py                   # Configuração do painel administrativo
     │   │   └── templates/
     │   │       └── catalog/
-    │   │           ├── list.html     # Página de catálogo
-    │   │           └── detail.html   # Página de detalhe do produto
+    │   │           ├── list.html          # Página de catálogo
+    │   │           └── detail.html        # Página de detalhe do produto
     │   │
-    │   └── orders/                   # Pedidos — implementado na Fase 5
-    │       ├── models.py             # class Pedido, class ItemPedido
+    │   └── orders/                        # Pedidos — implementado na Fase 5
+    │       ├── models.py                  # class Pedido, class ItemPedido
     │       ├── views.py
     │       ├── urls.py
     │       └── templates/
     │           └── orders/
     │
-    ├── static/                       # Arquivos do desenvolvedor (CSS, JS, imagens fixas)
+    ├── static/                            # Arquivos estáticos do Django (CSS/JS/imgs globais)
     │   ├── css/
-    │   │   └── style.css
+    │   │   └── style.css                  # ← CSS da landing page migrado para cá (Fase 2)
     │   ├── js/
     │   │   └── main.js
     │   └── images/
     │       └── logo.png
     │
-    └── media/                        # ⭐ Uploads do Admin (fotos dos produtos)
-        └── products/                 # Gerado automaticamente pelo Django
+    └── media/                             # ⭐ Uploads do Admin (fotos dos produtos)
+        └── products/                      # Gerado automaticamente pelo Django
 ```
 
-> **Por que múltiplas `apps`?**
-> Separar `catalog`, `orders` e `pages` em apps distintas mantém o código organizado e fácil de manter conforme o projeto cresce.
+> **Por que `frontend/` separado do `backend/`?**
+> A landing page foi criada como HTML/CSS/JS puros, sem Django. Manter essa separação preserva o histórico do projeto, facilita visualizar o trabalho no navegador sem subir servidor, e deixa claro no portfólio que há domínio de frontend estático **e** backend com framework. Na Fase 2, o conteúdo de `frontend/` é migrado para os Templates e `static/` do Django.
+
+> **Por que múltiplas `apps` dentro de `backend/`?**
+> Separar `catalog`, `orders` e `pages` em apps distintas mantém o código organizado e fácil de manter conforme o projeto cresce. Em portfólio, demonstra domínio real da arquitetura Django.
 
 > **Por que `settings/` separado?**
 > Ter `dev.py` e `prod.py` herdando de `base.py` evita expor configurações sensíveis (como a `SECRET_KEY` e credenciais do banco) no repositório, além de facilitar trocar de ambiente sem alterar código.
@@ -273,7 +285,7 @@ whitenoise            # Servir arquivos estáticos no Render
 
 ## 🔒 Segurança — O que NUNCA sobe para o Git
 
-Garantir que o seu `.gitignore` contenha:
+Garanta que o seu `.gitignore` contenha:
 
 ```
 .env
@@ -292,3 +304,7 @@ media/
 Desenvolvido como projeto de portfólio e vitrine digital para um artesão cuteleiro. O objetivo é demonstrar uma aplicação Django MTV completa, com foco em custo de operação zero na fase inicial, código organizado e boas práticas de desenvolvimento.
 
 **Tecnologias usadas:** Python · Django · HTML · CSS · JavaScript · PostgreSQL · Cloudinary · Render · Neon
+
+```
+
+```
