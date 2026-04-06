@@ -3,49 +3,255 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>VR Forge | Cutelaria Artesanal</title>
-
+    <title>V. R. Forge | Cutelaria Artesanal</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700;900&family=Raleway:wght@300;400;600&display=swap"
+      rel="stylesheet"
+    />
     <link rel="stylesheet" href="assets/css/style.css" />
   </head>
-  <body>
-    <header>
-      <div class="container">
-        <h1>VR Forge</h1>
+  <body class="is-loading">
+    <!-- EMBER CANVAS (faíscas animadas) -->
+    <canvas id="emberCanvas"></canvas>
+
+    <!-- FUNDO REATIVO COM LOGO -->
+    <div class="reactive-bg" id="reactiveBg">
+      <img
+        src="assets/images/logo/LogoPuncao2.png"
+        alt=""
+        class="bg-logo bg-logo-1"
+        aria-hidden="true"
+      />
+      <img
+        src="assets/images/logo/LogoPuncao.png"
+        alt=""
+        class="bg-logo bg-logo-2"
+        aria-hidden="true"
+      />
+    </div>
+
+    <!-- HEADER -->
+    <header class="site-header" id="siteHeader">
+      <div class="container header-inner">
+        <a href="#inicio" class="header-logo-link">
+          <img
+            src="assets/images/logo/LogoPuncao.png"
+            alt="V. R. Forge"
+            class="header-logo"
+          />
+        </a>
+        <nav class="main-nav" id="mainNav">
+          <ul>
+            <li><a href="#inicio" class="nav-link">Início</a></li>
+            <li><a href="#acervo" class="nav-link">Acervo</a></li>
+            <li><a href="#artesao" class="nav-link">O Artesão</a></li>
+            <li><a href="#contato" class="nav-link">Contato</a></li>
+          </ul>
+        </nav>
+        <button class="hamburger" id="hamburger" aria-label="Abrir menu">
+          <span></span>
+          <span></span>
+          <span></span>
+        </button>
       </div>
     </header>
 
-    <section class="hero">
-      <div class="container">
-        <h2>Facas forjadas a mão com alma e aço.</h2>
-        <p>Conheça nosso trabalho artesanal</p>
-        <a href="#galeria" class="btn-fire">Ver o Acervo</a>
+    <!-- HERO -->
+    <section class="hero" id="inicio">
+      <div class="hero-overlay"></div>
+      <div class="container hero-content">
+        <span class="hero-tagline reveal-fade">CUTELARIA ARTESANAL</span>
+        <h1 class="hero-title reveal-up">
+          FORJANDO<br /><em>AÇO</em><br />E ALMA
+        </h1>
+        <p class="hero-subtitle reveal-fade delay-2">
+          Cada lâmina é uma obra única — temperada no fogo,<br />
+          moldada pela mão e pelo tempo.
+        </p>
+        <a href="#acervo" class="btn-primary reveal-fade delay-3">
+          <span>VER O ACERVO</span>
+          <svg
+            width="20"
+            height="20"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="2"
+          >
+            <line x1="5" y1="12" x2="19" y2="12" />
+            <polyline points="12 5 19 12 12 19" />
+          </svg>
+        </a>
+      </div>
+      <div class="hero-scroll-hint">
+        <span></span>
       </div>
     </section>
 
-    <section id="galeria" class="gallery-section">
+    <!-- DIVIDER -->
+    <div class="section-divider">
+      <svg
+        viewBox="0 0 1200 40"
+        preserveAspectRatio="none"
+        xmlns="http://www.w3.org/2000/svg"
+      >
+        <path
+          d="M0,20 Q300,0 600,20 T1200,20 L1200,40 L0,40 Z"
+          fill="#111111"
+        />
+      </svg>
+    </div>
+
+    <!-- ACERVO / GALERIA -->
+    <section class="gallery-section" id="acervo">
       <div class="container">
-        <h3>Nossas Lâminas</h3>
-        <div class="gallery-grid">
-          <div class="knife-card">
-            <img src="assets/images/gallery/faca1.jpg" alt="Faca1" />
-            <p>Facas</p>
-          </div>
+        <div class="section-header">
+          <span class="section-label">— TRABALHO FORJADO —</span>
+          <h2 class="section-title">O ACERVO DE LÂMINAS</h2>
+          <p class="section-desc">
+            Peças únicas, criadas com aço de alta qualidade e acabamento
+            artesanal minucioso.
+          </p>
+        </div>
+        <div class="gallery-grid" id="galleryGrid">
+          <!-- Preenchido via JS -->
         </div>
       </div>
     </section>
 
-    <footer>
-      <div class="container">
-        <p>Gostou de alguma peça? Faça sua encomenda.</p>
-        <a
-          href="https://wa.me/55043998314071"
-          class="btn-whatsapp"
-          target="_blank"
-          >Falar no WhatsApp</a
-        >
+    <!-- O ARTESÃO (WORKING SECTION) -->
+    <section class="artisan-section" id="artesao">
+      <div class="artisan-bg-strip"></div>
+      <div class="container artisan-inner">
+        <div class="artisan-media" id="artisanMedia">
+          <!-- Preenchido via JS -->
+        </div>
+        <div class="artisan-text">
+          <span class="section-label">— O ARTESÃO —</span>
+          <h2 class="section-title">FERRO, FOGO<br />&amp; TRADIÇÃO</h2>
+          <p>
+            Por trás de cada faca existe um processo meticuloso: o aço é
+            aquecido até a temperatura exata, forjado golpe a golpe, temperado
+            para obter a dureza ideal e, por fim, afiado até o gume perfeito.
+          </p>
+          <p>
+            V. R. Forge nasce da paixão pela cutelaria tradicional — onde a
+            paciência, o domínio do fogo e o respeito pelo material resultam em
+            peças que duram gerações.
+          </p>
+          <a href="#contato" class="btn-secondary">ENCOMENDAR UMA PEÇA</a>
+        </div>
+      </div>
+    </section>
+
+    <!-- CONTATO / FOOTER -->
+    <footer class="site-footer" id="contato">
+      <div class="footer-flame-divider">
+        <div class="flame-line"></div>
+      </div>
+      <div class="container footer-inner">
+        <div class="footer-logo-wrap">
+          <img
+            src="assets/images/logo/LogoPuncao.png"
+            alt="V. R. Forge"
+            class="footer-logo"
+          />
+        </div>
+        <div class="footer-text">
+          <p class="footer-tagline">FEITO À MÃO. FORJADO COM ALMA.</p>
+          <div class="social-links">
+            <a
+              href="https://www.instagram.com/v.r.forge/"
+              class="social-btn"
+              target="_blank"
+              rel="noopener"
+              aria-label="Instagram"
+            >
+              <svg
+                width="22"
+                height="22"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="1.8"
+              >
+                <rect x="2" y="2" width="20" height="20" rx="5" ry="5" />
+                <circle cx="12" cy="12" r="4" />
+                <circle
+                  cx="17.5"
+                  cy="6.5"
+                  r="1"
+                  fill="currentColor"
+                  stroke="none"
+                />
+              </svg>
+              Instagram
+            </a>
+            <a
+              href="https://wa.me/55043998314071"
+              class="social-btn whatsapp"
+              target="_blank"
+              rel="noopener"
+              aria-label="WhatsApp"
+            >
+              <svg
+                width="22"
+                height="22"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="1.8"
+              >
+                <path
+                  d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"
+                />
+              </svg>
+              WhatsApp
+            </a>
+          </div>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <p>
+          © 2024 V. R. FORGE — CUTELARIA ARTESANAL. TODOS OS DIREITOS
+          RESERVADOS.
+        </p>
       </div>
     </footer>
 
+    <!-- LIGHTBOX -->
+    <div
+      class="lightbox"
+      id="lightbox"
+      role="dialog"
+      aria-modal="true"
+      aria-label="Visualizar imagem"
+    >
+      <button class="lightbox-close" id="lightboxClose" aria-label="Fechar">
+        &times;
+      </button>
+      <button
+        class="lightbox-nav lightbox-prev"
+        id="lightboxPrev"
+        aria-label="Anterior"
+      >
+        &#8249;
+      </button>
+      <div class="lightbox-img-wrap">
+        <img src="" alt="" id="lightboxImg" />
+        <p class="lightbox-caption" id="lightboxCaption"></p>
+      </div>
+      <button
+        class="lightbox-nav lightbox-next"
+        id="lightboxNext"
+        aria-label="Próxima"
+      >
+        &#8250;
+      </button>
+    </div>
+    <!-- <script src="main.js"></script> -->
     <script src="assets/js/main.js"></script>
   </body>
 </html>
