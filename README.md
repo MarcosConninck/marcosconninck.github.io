@@ -1,310 +1,138 @@
-# ⚒️ V. R. Forge — Portfólio e E-commerce de Cutelaria Artesanal
+# ⚒️ V. R. Forge — Cutelaria Artesanal
 
-Plataforma online da **V. R. Forge**, o trabalho de um ferreiro artesanal. O projeto iniciou como uma Landing Page mobile-first e está evoluindo para um catálogo dinâmico com painel administrativo completo.
+Site da **V. R. Forge**, o trabalho de um cuteleiro artesanal: vitrine das peças, apresentação do artesão e canal direto de encomendas pelo WhatsApp.
 
----
-
-## 🧱 Arquitetura do Projeto
-
-Este projeto adota o padrão **MTV (Model-Template-View)**, arquitetura nativa do Django e a escolha mais adequada para este tipo de aplicação.
-
-| Camada       | Componente Django | Responsabilidade                                                            |
-| ------------ | ----------------- | --------------------------------------------------------------------------- |
-| **Model**    | `models.py`       | Estrutura de dados e regras de negócio                                      |
-| **Template** | Arquivos `.html`  | O que o usuário vê (apresentação)                                           |
-| **View**     | `views.py`        | Lógica de requisição e resposta (equivalente ao Controller no MVC clássico) |
-
-**Frontend:** HTML, CSS e JavaScript puros — sem frameworks JS — para máxima performance e simplicidade de manutenção.
-
-**Backend:** Python com Django, servindo páginas através de Templates.
-
-**Banco de Dados:**
-
-- **Desenvolvimento (local):** SQLite — embutido no Python, zero configuração.
-- **Produção (nuvem):** PostgreSQL via [Neon.tech](https://neon.tech) (plano gratuito).
+🔗 **No ar:** https://marcosconninck.github.io/
 
 ---
 
-## 💰 Stack de Custo Zero
+## 🧱 Como o projeto é feito
 
-Todos os serviços abaixo possuem plano gratuito suficiente para o estágio inicial do projeto.
+- **HTML, CSS e JavaScript puros** — sem frameworks e sem etapa de build.
+- **Hospedagem:** GitHub Pages (gratuito). Todo `push` na branch `main` publica o site em 1–2 minutos.
+- **Mobile-first:** pensado primeiro para o celular, que é por onde chega a maioria dos clientes (Instagram/WhatsApp).
+- **Conteúdo separado do código:** as peças, fotos e contatos ficam em um único arquivo, [`assets/js/dados.js`](assets/js/dados.js).
 
-| Componente          | Serviço                              | Observação                                        |
-| ------------------- | ------------------------------------ | ------------------------------------------------- |
-| **Backend Django**  | [Render.com](https://render.com)     | Free tier — hiberna após 15 min de inatividade    |
-| **Banco de Dados**  | [Neon.tech](https://neon.tech)       | PostgreSQL gratuito — 0.5 GB de armazenamento     |
-| **Imagens / Mídia** | [Cloudinary](https://cloudinary.com) | 25 GB gratuitos para upload de fotos dos produtos |
-| **Domínio**         | Subdomínio do Render                 | Ex: `vrforge.onrender.com`                        |
-| **Pagamentos**      | Mercado Pago                         | Sem mensalidade — cobrança por % sobre cada venda |
+### O que o site tem
 
-> ⚠️ **Atenção sobre o Render (Free Tier):** O servidor "hiberna" após 15 minutos sem acesso. O primeiro acesso do dia pode levar cerca de 30 segundos para carregar. Isso é aceitável para o estágio atual. Quando o negócio crescer, o upgrade custa aproximadamente USD 7/mês.
+| Seção | O que faz |
+| --- | --- |
+| **Início** | Apresentação com animação de brasas e atalhos para o acervo e para encomendar |
+| **Acervo** | Galeria das peças. Ao tocar, abre a foto ampliada com navegação (setas, teclado ou deslizar o dedo) e o botão **"Quero uma peça como esta"**, que abre o WhatsApp com o nome da peça já escrito |
+| **O Artesão** | Texto e fotos da oficina (no celular, uma faixa que se desliza para o lado; ao tocar, a foto amplia) |
+| **Como encomendar** | O passo a passo da encomenda (no celular, em formato de linha do tempo) |
+| **Contato** | WhatsApp e Instagram |
+| **Botões flutuantes** | WhatsApp sempre à mão (some quando a seção de contato está na tela) e "voltar ao topo" no desktop |
 
----
-
-## 🎯 Plano de Ação — Fases do Projeto
-
-### ✅ Fase 1 — Landing Page (Concluída)
-
-- [x] Desenvolver Landing Page estática com design rústico e responsivo (Mobile-First).
-
-### 🔧 Fase 2 — Base Django (Em andamento)
-
-- [ ] Configurar o projeto Django com estrutura de `apps` separadas por domínio.
-- [ ] Separar as configurações em `base.py`, `dev.py` e `prod.py`.
-- [ ] Configurar o arquivo `.env` para proteger variáveis sensíveis.
-- [ ] Integrar o HTML/CSS/JS existente aos Templates do Django.
-- [ ] Fazer o deploy inicial no Render + Neon.
-
-### 📦 Fase 3 — Catálogo de Produtos
-
-- [ ] Criar o `Model` de `Produto` e `Categoria` no banco de dados.
-- [ ] Configurar o **Django Admin** para o ferreiro poder gerenciar produtos (adicionar, editar, excluir e fazer upload de fotos).
-- [ ] Integrar o **Cloudinary** para armazenamento de imagens em produção.
-- [ ] Criar as páginas de listagem e detalhe de produto.
-
-### 📲 Fase 4 — Pedidos via WhatsApp (Baixo custo, alto impacto)
-
-- [ ] Implementar botão "Encomendar via WhatsApp" com mensagem pré-formatada contendo o nome e detalhes do produto.
-- [ ] Sem necessidade de gateway de pagamento — funcional e sem custo adicional.
-
-### 💳 Fase 5 — Pagamentos Online (Quando o negócio validar)
-
-- [ ] Integrar o Mercado Pago Checkout para pagamentos online.
-- [ ] Criar o `Model` de `Pedido` e `ItemPedido`.
-- [ ] Implementar fluxo de confirmação de pedido por e-mail.
+Também inclui: favicon, imagem de prévia para links compartilhados (WhatsApp, Instagram, Facebook), menu que destaca a seção atual, acessibilidade por teclado e respeito à opção do sistema de "reduzir movimento".
 
 ---
 
-## 📂 Estrutura de Pastas do Projeto
+## 📂 Estrutura de pastas
 
 ```
-project-root/
-│
+marcosconninck.github.io/
+├── index.html              # A página (todas as seções)
 ├── README.md
-├── .env                                   # ⚠️ Variáveis secretas — NUNCA sobe para o Git
 ├── .gitignore
 │
-├── frontend/                              # 🎨 Landing Page estática (HTML/CSS/JS puros)
-│   ├── index.html                         # Ponto de entrada — abre direto no navegador
+├── assets/
 │   ├── css/
-│   │   └── style.css                      # Estilos globais (design rústico, mobile-first)
+│   │   └── style.css       # Estilos (organizado por seções, com índice no topo)
 │   ├── js/
-│   │   └── main.js                        # Scripts de interação da landing page
-│   └── images/                            # Imagens estáticas da landing page
-│       └── logo.png
+│   │   ├── dados.js        # ⭐ CONTEÚDO: WhatsApp, Instagram, peças e fotos
+│   │   └── main.js         # Comportamento: menu, galeria, lightbox, animações
+│   └── img/
+│       ├── pecas/          # Fotos das facas (faca-01.jpg, faca-06b.jpg…)
+│       ├── artesao/        # Fotos do artesão na oficina
+│       ├── logo/           # logo.png (completo) e emblema.png (só o símbolo)
+│       ├── icons/          # Favicon e ícones de atalho do celular
+│       └── og-image.jpg    # Imagem que aparece ao compartilhar o link
 │
-└── backend/                               # ⚙️ Projeto Django (MTV)
-    ├── manage.py                          # Gerenciador de comandos do Django
-    ├── requirements.txt                   # Dependências do projeto (Django, Psycopg2, etc.)
-    ├── db.sqlite3                         # Banco de dados local (gerado automaticamente — apenas dev)
-    │
-    ├── vrforge/                           # Configurações globais do projeto Django
-    │   ├── __init__.py
-    │   ├── wsgi.py
-    │   ├── urls.py                        # Roteador principal de URLs
-    │   └── settings/                      # ⭐ Settings separados por ambiente
-    │       ├── base.py                    # Configurações comuns (dev + prod)
-    │       ├── dev.py                     # SQLite, DEBUG=True, variáveis locais
-    │       └── prod.py                    # PostgreSQL, variáveis de ambiente, segurança
-    │
-    ├── apps/                              # ⭐ Apps Django separadas por domínio
-    │   │
-    │   ├── pages/                         # Páginas institucionais (Home, Sobre, Contato)
-    │   │   ├── views.py
-    │   │   ├── urls.py
-    │   │   └── templates/
-    │   │       └── pages/
-    │   │           ├── home.html          # ← HTML da landing page migrado para cá (Fase 2)
-    │   │           └── about.html
-    │   │
-    │   ├── catalog/                       # Catálogo de Produtos / Facas
-    │   │   ├── models.py                  # class Produto, class Categoria
-    │   │   ├── views.py                   # Lista de produtos, detalhe do produto
-    │   │   ├── urls.py
-    │   │   ├── admin.py                   # Configuração do painel administrativo
-    │   │   └── templates/
-    │   │       └── catalog/
-    │   │           ├── list.html          # Página de catálogo
-    │   │           └── detail.html        # Página de detalhe do produto
-    │   │
-    │   └── orders/                        # Pedidos — implementado na Fase 5
-    │       ├── models.py                  # class Pedido, class ItemPedido
-    │       ├── views.py
-    │       ├── urls.py
-    │       └── templates/
-    │           └── orders/
-    │
-    ├── static/                            # Arquivos estáticos do Django (CSS/JS/imgs globais)
-    │   ├── css/
-    │   │   └── style.css                  # ← CSS da landing page migrado para cá (Fase 2)
-    │   ├── js/
-    │   │   └── main.js
-    │   └── images/
-    │       └── logo.png
-    │
-    └── media/                             # ⭐ Uploads do Admin (fotos dos produtos)
-        └── products/                      # Gerado automaticamente pelo Django
+└── _fontes/
+    └── logo/               # Logos originais em alta resolução (não são publicados)
 ```
 
-> **Por que `frontend/` separado do `backend/`?**
-> A landing page foi criada como HTML/CSS/JS puros, sem Django. Manter essa separação preserva o histórico do projeto, facilita visualizar o trabalho no navegador sem subir servidor, e deixa claro no portfólio que há domínio de frontend estático **e** backend com framework. Na Fase 2, o conteúdo de `frontend/` é migrado para os Templates e `static/` do Django.
-
-> **Por que múltiplas `apps` dentro de `backend/`?**
-> Separar `catalog`, `orders` e `pages` em apps distintas mantém o código organizado e fácil de manter conforme o projeto cresce. Em portfólio, demonstra domínio real da arquitetura Django.
-
-> **Por que `settings/` separado?**
-> Ter `dev.py` e `prod.py` herdando de `base.py` evita expor configurações sensíveis (como a `SECRET_KEY` e credenciais do banco) no repositório, além de facilitar trocar de ambiente sem alterar código.
+> A pasta `_fontes/` começa com `_` de propósito: o GitHub Pages **não publica** pastas assim. Ela guarda os arquivos originais do logo (7618×10000 px) para impressão ou para gerar novas versões, sem pesar no site.
 
 ---
 
-## 🛠️ Como Rodar o Projeto Localmente
+## ✏️ Tarefas do dia a dia
 
-### Pré-requisitos
+### Adicionar uma faca nova
 
-- Python 3.10 ou superior
-- Git instalado
+1. Salve a foto em `assets/img/pecas/` (ex.: `faca-07.jpg`). Para o site ficar leve, use fotos com **no máximo ~1280 px** no lado maior (fotos de celular enviadas pelo WhatsApp já vêm nesse tamanho).
+2. Abra `assets/js/dados.js` e copie um bloco de peça dentro de `pecas`:
 
-### Passo a Passo
+```js
+{
+  nome: "Lâmina VII",
+  descricao: "Aço 1070, cabo em jacarandá, lâmina de 15 cm.",
+  status: "disponivel",
+  fotos: ["assets/img/pecas/faca-07.jpg"],
+},
+```
 
-**1. Clone o repositório e entre na pasta:**
+- `descricao` e `status` são opcionais (podem ficar `""`).
+- `status` aceita `"disponivel"`, `"vendida"` ou `"encomenda"` e aparece como um selo no card.
+- Para várias fotos da mesma peça, liste todas em `fotos` — a primeira é a capa.
+- A ordem no arquivo é a ordem no site.
+
+### Trocar o número do WhatsApp ou o Instagram
+
+Em `assets/js/dados.js`, altere `whatsapp` (só dígitos: `55` + DDD sem o zero + número) e `instagram`.
+Os links que já estão escritos no `index.html` servem só como reserva caso o JavaScript não carregue — vale atualizá-los também.
+
+### Ver o site no computador antes de publicar
+
+Basta abrir o `index.html` com dois cliques no navegador. Se preferir um servidor local:
 
 ```bash
-git clone https://github.com/SEU_USUARIO/SEU_REPOSITORIO.git
-cd SEU_REPOSITORIO
+python -m http.server 8000
 ```
 
-**2. Crie e ative o ambiente virtual:**
+e acesse http://localhost:8000.
 
-```bash
-# Windows:
-python -m venv venv
-venv\Scripts\activate
+### Publicar
 
-# Mac / Linux:
-python3 -m venv venv
-source venv/bin/activate
-```
-
-**3. Entre na pasta do backend e instale as dependências:**
-
-```bash
-cd backend
-pip install -r requirements.txt
-```
-
-**4. Configure as variáveis de ambiente:**
-
-Crie um arquivo `.env` dentro da pasta `backend/` com o seguinte conteúdo:
-
-```env
-SECRET_KEY=coloque-aqui-uma-chave-secreta-longa-e-aleatoria
-DEBUG=True
-DATABASE_URL=sqlite:///db.sqlite3
-```
-
-> Para gerar uma `SECRET_KEY` segura, rode no terminal:
->
-> ```bash
-> python -c "from django.core.management.utils import get_random_secret_key; print(get_random_secret_key())"
-> ```
-
-**5. Prepare o banco de dados (Migrações):**
-
-```bash
-python manage.py migrate --settings=vrforge.settings.dev
-```
-
-**6. Crie um superusuário (para acessar o painel Admin):**
-
-```bash
-python manage.py createsuperuser --settings=vrforge.settings.dev
-```
-
-**7. Rode o servidor de desenvolvimento:**
-
-```bash
-python manage.py runserver --settings=vrforge.settings.dev
-```
-
-**Acesse no seu navegador:**
-
-- Site Principal: [http://127.0.0.1:8000/](http://127.0.0.1:8000/)
-- Painel Admin: [http://127.0.0.1:8000/admin/](http://127.0.0.1:8000/admin/)
+Pelo **GitHub Desktop**: revise as alterações na aba *Changes* → escreva um resumo → **Commit to main** → **Push origin**. Em 1–2 minutos o site está atualizado.
 
 ---
 
-## 🚀 Deploy em Produção (Custo Zero)
+## 🎯 Plano de ação
 
-### Banco de Dados — Neon.tech
+### ✅ Fase 1 — Landing page (concluída)
 
-1. Crie uma conta em [neon.tech](https://neon.tech) e crie um novo projeto.
-2. Copie a `DATABASE_URL` fornecida pelo painel do Neon.
+- [x] Landing page estática, rústica e responsiva (mobile-first).
 
-### Mídia — Cloudinary
+### ✅ Fase 2 — Vitrine e encomendas (concluída)
 
-1. Crie uma conta em [cloudinary.com](https://cloudinary.com).
-2. Copie as credenciais: `CLOUD_NAME`, `API_KEY` e `API_SECRET`.
+- [x] Reorganização de pastas e otimização das imagens (logo de ~870 KB → ~60 KB).
+- [x] Conteúdo separado em `dados.js` para facilitar a manutenção.
+- [x] Botão de WhatsApp por peça com mensagem pré-formatada.
+- [x] Seções "Como encomendar" e "Contato"; botões flutuantes.
+- [x] Favicon, prévia de link compartilhado (Open Graph) e meta description.
 
-### Servidor — Render.com
+### 🔜 Fase 3 — Conteúdo
 
-1. Crie uma conta em [render.com](https://render.com) e conecte seu repositório GitHub.
-2. Crie um novo **Web Service** apontando para a pasta `backend/`.
-3. Configure as variáveis de ambiente no painel do Render:
+- [ ] Preencher `descricao` e `status` de cada peça (aço, cabo, medidas, disponível/vendida).
+- [ ] Mais fotos por peça (detalhes do cabo, da lâmina, da bainha).
+- [ ] Domínio próprio (ex.: `vrforge.com.br`) apontando para o GitHub Pages.
 
-```env
-SECRET_KEY=sua-chave-secreta-de-producao
-DEBUG=False
-DATABASE_URL=postgresql://...  # URL fornecida pelo Neon
-CLOUDINARY_CLOUD_NAME=...
-CLOUDINARY_API_KEY=...
-CLOUDINARY_API_SECRET=...
-DJANGO_SETTINGS_MODULE=vrforge.settings.prod
-```
+### 💭 Futuro — Só quando houver necessidade real
 
-4. Configure o comando de start:
+A ideia original de migrar para **Django + PostgreSQL + Cloudinary** (com painel administrativo e pagamento via Mercado Pago) continua possível, mas só compensa quando o volume justificar. Sinais de que chegou a hora:
 
-```bash
-gunicorn vrforge.wsgi:application
-```
+- o artesão precisa cadastrar peças sozinho com frequência e editar `dados.js` virou um obstáculo;
+- há estoque/pedidos para controlar;
+- surge demanda real por pagamento online.
+
+Até lá, a solução atual é mais rápida (o site abre na hora, sem servidor "hibernando"), gratuita e sem manutenção de servidor. Caminhos intermediários, se for preciso que o artesão edite sozinho: um CMS sem servidor (ex.: Decap CMS) ou uma planilha do Google como fonte das peças.
 
 ---
 
-## 📦 Dependências Principais
+## 🤝 Sobre
 
-```
-Django>=4.2
-psycopg2-binary       # Driver do PostgreSQL
-python-decouple       # Leitura do arquivo .env
-cloudinary            # Armazenamento de imagens em produção
-django-cloudinary-storage
-gunicorn              # Servidor WSGI para produção
-whitenoise            # Servir arquivos estáticos no Render
-```
+Desenvolvido como vitrine digital para um artesão cuteleiro e como projeto de portfólio.
 
----
-
-## 🔒 Segurança — O que NUNCA sobe para o Git
-
-Garanta que o seu `.gitignore` contenha:
-
-```
-.env
-*.sqlite3
-venv/
-__pycache__/
-media/
-*.pyc
-.DS_Store
-```
-
----
-
-## 🤝 Sobre o Projeto
-
-Desenvolvido como projeto de portfólio e vitrine digital para um artesão cuteleiro. O objetivo é demonstrar uma aplicação Django MTV completa, com foco em custo de operação zero na fase inicial, código organizado e boas práticas de desenvolvimento.
-
-**Tecnologias usadas:** Python · Django · HTML · CSS · JavaScript · PostgreSQL · Cloudinary · Render · Neon
-
-```
-
-```
+**Tecnologias:** HTML · CSS · JavaScript · GitHub Pages
