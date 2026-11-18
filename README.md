@@ -113,21 +113,18 @@ Pelo **GitHub Desktop**: revise as alterações na aba *Changes* → escreva um 
 - [x] Seções "Como encomendar" e "Contato"; botões flutuantes.
 - [x] Favicon, prévia de link compartilhado (Open Graph) e meta description.
 
-### 🔜 Fase 3 — Conteúdo
+### 🔜 Fase 3 — Hospedagem própria e painel no celular
+
+- [ ] Publicar na **Cloudflare Pages** (gratuito), ligada a este repositório: cada alteração publica o site sozinha.
+- [ ] Domínio próprio (ex.: `vrforge.com.br`, registrado no Registro.br).
+- [ ] Painel de edição pelo celular com o **Pages CMS**: o artesão entra com o e-mail (sem precisar de conta no GitHub) e adiciona, troca ou remove facas e fotos.
+- [ ] Passar o conteúdo de `dados.js` para um arquivo `.json`, que o painel consegue editar.
+- [ ] Compressão automática das fotos enviadas pelo celular, para o site continuar leve.
+
+### 🔜 Fase 4 — Conteúdo
 
 - [ ] Preencher `descricao` e `status` de cada peça (aço, cabo, medidas, disponível/vendida).
 - [ ] Mais fotos por peça (detalhes do cabo, da lâmina, da bainha).
-- [ ] Domínio próprio (ex.: `vrforge.com.br`) apontando para o GitHub Pages.
-
-### 💭 Futuro — Só quando houver necessidade real
-
-A ideia original de migrar para **Django + PostgreSQL + Cloudinary** (com painel administrativo e pagamento via Mercado Pago) continua possível, mas só compensa quando o volume justificar. Sinais de que chegou a hora:
-
-- o artesão precisa cadastrar peças sozinho com frequência e editar `dados.js` virou um obstáculo;
-- há estoque/pedidos para controlar;
-- surge demanda real por pagamento online.
-
-Até lá, a solução atual é mais rápida (o site abre na hora, sem servidor "hibernando"), gratuita e sem manutenção de servidor. Caminhos intermediários, se for preciso que o artesão edite sozinho: um CMS sem servidor (ex.: Decap CMS) ou uma planilha do Google como fonte das peças.
 
 ---
 
